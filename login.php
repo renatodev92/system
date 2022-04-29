@@ -3,10 +3,11 @@
 session_start(); //Iniciando a sessão.
 require_once "conectar.php";//Conectando o php com o banco de dados.
 
-// isset = (se o botão de btn-logar for clicado e existir, execute as instruções abaixo.
+// isset: se o botão btn-logar for clicado e existir, executa o script abaixo.
 if(isset($_POST['btn-logar'])):
     $user     = mysqli_escape_string($mysqlConector, $_POST['user']);
     $password = mysqli_escape_string($mysqlConector, $_POST['password']);
+    
     //Se as variaveis usuário ou senha estiverem vazias. Se for verdade exiba o erro.
     if(empty($user) or empty($password)):
         echo "<script>
