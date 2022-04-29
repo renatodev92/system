@@ -1,20 +1,20 @@
 <?php 
 
-require_once('conectar.php');//Conectando o php com o banco de dados.
-require_once('view.php'); //Verificando se existe uma sessão iniciada 
+session_start(); //Iniciando a sessão.
+require_once "conectar.php";//Conectando o php com o banco de dados.
 
-// isset = (se o botão de login for clicado e existir, execute as instruções abaixo.)
+// isset = (se o botão de btn-logar for clicado e existir, execute as instruções abaixo.
 if(isset($_POST['btn-logar'])):
     $user     = mysqli_escape_string($mysqlConector, $_POST['user']);
     $password = mysqli_escape_string($mysqlConector, $_POST['password']);
-
-        if(empty($user) or empty($password)):
-            echo "<script>
-            alert('Os campos login e senha prescisam estar preenchidos!');
-            window.location.href='index.html';
-            </script>";
+    //Se as variaveis usuário ou senha estiverem vazias. Se for verdade exiba o erro.
+    if(empty($user) or empty($password)):
+        echo "<script>
+        alert('Os campos login e senha prescisam estar preenchidos!');
+        window.location.href='index.html';
+        </script>";
+        exit();// Caso a condição for válida executa a instrução e deixa de executar o script a frente.
         else:
-
             $sql    = "SELECT usuario FROM tb_usuarios  WHERE usuario='$user'";
             $result = mysqli_query($mysqlConector, $sql);
 
@@ -26,23 +26,28 @@ if(isset($_POST['btn-logar'])):
               
                     if(mysqli_num_rows($result) == 1):
                         $dados = mysqli_fetch_array($result);
-                        mysqli_close($mysqlConector);// Fechando a conexão com o banco de dados após a consulta.
-                        $_SESSION['logado'] = true;
+                        //mysqli_close($mysqlConector);// Fechando a conexão com o banco de dados após a consulta.
+                        $_SESSION['logado']     = true;
+                        $_SESSION['usuario']    = $dados['usuario'];
+                        $_SESSION['email']      = $dados['email'];
                         $_SESSION['id_usuario'] = $dados['id'];
-                         header('Location: main.php');
+                        header('Location:main.php');
+                        // Caso a condição for válida executa a instrução e deixa de executar o script a frente.
                      else:
                         echo "<script>
                         alert('Usúario e senha não conferem!');
                         window.location.href='index.html';
                         </script>";
-                     endif;   
+                     endif; 
+                     exit();  // Caso a condição for válida executa a instrução e deixa de executar o script a frente.
                 else:
                     echo "<script>
                     alert('Usúario não cadastrado');
                     window.location.href='index.html';
-                    </script>"; 
+                    </script>";
+                    exit(); // Caso a condição for válida executa a instrução e deixa de executar o script a frente.
                 endif;      
-     endif;
+        endif;
 endif;
 ?>
 

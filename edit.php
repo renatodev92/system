@@ -22,7 +22,7 @@ $result =mysqli_fetch_array($sql_consult);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar usúario</title>
+    <title>editar usuário</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
@@ -45,7 +45,7 @@ $result =mysqli_fetch_array($sql_consult);
                 <div class="row">
                     <div class="col-12 col-md-12">
                         <form method="POST" action="update.php">
-                            <h2 class="text-secondary">Editar Usúario</h2>
+                            <h2 class="text-secondary">Editar Usuário</h2>
 
                             <input type="hidden" id="cod" name="cod" value='<?=$result[0]?>'>
                             

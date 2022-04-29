@@ -10,13 +10,9 @@
 </head>
 <body>
     <?php 
-
-        //Incluindo a conexão com o banco de dados com o require_once.
-        require_once 'conectar.php';
-        require_once('view.php'); //Verificando se existe uma sessão iniciada 
+        require_once 'conectar.php';//Incluindo a conexão com o banco de dados com o require_once.
+        require_once  'view.php'; //Verificando se existe uma sessão iniciada 
     ?>
-
-
 
     <center>
         <header>
@@ -34,18 +30,28 @@
             <div class="container">
                 <div class="row">  
                     <div class="col-12 col-md-12">  
-                        <h2 class="text-secondary">Bem-vindo(a) ao nosso sistema!</h2>
+                        <h2 class="text-secondary">Bem-vindo(a) ao nosso sistema!</h2><br>
+
                         <div>
-                        <ul class="list-unstyled">
-                            <li><a href="listOfUsers.php">Usúarios cadastrados</a></li>
-                        </ul>
+                            <h6 style="text-transform: uppercase; color:gray;">Usuário:
+                                    <?php 
+                                        echo $_SESSION['usuario'];
+                                    ?>
+                                </h6>
+                                <h6 style="color:gray;">EMAIL:
+                                    <?php 
+                                        echo $_SESSION['email'];
+                                    ?>
+                            </h6><br>
+                            <ul class="list-unstyled">
+                                <li><a href="listOfUsers.php">Usúarios cadastrados</a></li>
+                                <li><a href="logout.php">Sair</a></li>
+                            </ul>
                         </div>
                     </div> 
                 </div> 
             </div>
-        </section>
-
-              
+        </section>              
     </center>
     
 </body>

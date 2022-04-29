@@ -12,7 +12,6 @@ $sql_register = mysqli_query($mysqlConector , " INSERT INTO tb_usuarios(usuario,
 if($sql_register == true) {
 
     echo "<script>
-
         alert('Usúario cadastrado com sucesso! ');
         window.location.href='index.html';
     </script> ";
@@ -20,9 +19,7 @@ if($sql_register == true) {
 
 else {
     echo "<script>
-
-    alert('Falha ao cadastrar usúario!');
-    window.location.href='register.html';
-
-</script>";
+        alert('Falha ao cadastrar usúario!');
+        window.location.href='register.html';
+    </script>";
 }
